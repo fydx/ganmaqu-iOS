@@ -22,12 +22,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="定制全能出行解决方案" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSV-GZ-BiI">
-                                <rect key="frame" x="75" y="190" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="- 推荐商圈 -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCS-n9-U4K">
                                 <rect key="frame" x="119" y="273" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -46,24 +40,36 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-uN-brp">
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-uN-brp">
                                 <rect key="frame" x="75" y="302" width="170" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="70" minY="10" maxX="70" maxY="10"/>
                                 <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-Hr-wpX">
-                                <rect key="frame" x="119" y="369" width="83" height="30"/>
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-Hr-wpX">
+                                <rect key="frame" x="92" y="369" width="133" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="70" minY="10" maxX="70" maxY="10"/>
                                 <state key="normal" title="Button">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="定制全能出行解决方案" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSV-GZ-BiI">
+                                <rect key="frame" x="75" y="190" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.69411764705882351" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="qwP-Hr-wpX" secondAttribute="centerX" id="H8U-gD-rPi"/>
                             <constraint firstItem="gcC-uN-brp" firstAttribute="top" secondItem="sCS-n9-U4K" secondAttribute="bottom" constant="5" id="Imm-De-1Pi"/>
-                            <constraint firstItem="qwP-Hr-wpX" firstAttribute="top" secondItem="fTb-Yx-BsO" secondAttribute="bottom" constant="15" id="aoi-lL-igQ"/>
+                            <constraint firstItem="qwP-Hr-wpX" firstAttribute="top" secondItem="fTb-Yx-BsO" secondAttribute="bottom" constant="5" id="aoi-lL-igQ"/>
                             <constraint firstItem="JCR-SY-4zS" firstAttribute="top" secondItem="qwP-Hr-wpX" secondAttribute="bottom" constant="20" id="bM8-qO-rEh"/>
                             <constraint firstItem="uSV-GZ-BiI" firstAttribute="top" secondItem="6jr-fy-RWl" secondAttribute="bottom" constant="15" id="bQh-0b-nY1"/>
                             <constraint firstAttribute="centerY" secondItem="sCS-n9-U4K" secondAttribute="centerY" id="dIu-cW-b6P"/>

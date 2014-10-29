@@ -15,6 +15,7 @@
 		DA36E59C19FE15F3005B6A60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA36E59B19FE15F3005B6A60 /* Images.xcassets */; };
 		DA36E59F19FE15F3005B6A60 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA36E59D19FE15F3005B6A60 /* LaunchScreen.xib */; };
 		DA36E5AB19FE15F3005B6A60 /* ganmaquTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA36E5AA19FE15F3005B6A60 /* ganmaquTests.m */; };
+		DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4DF6461A014C04004B61A3 /* AppUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		DA36E5A419FE15F3005B6A60 /* ganmaquTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ganmaquTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA36E5A919FE15F3005B6A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA36E5AA19FE15F3005B6A60 /* ganmaquTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ganmaquTests.m; sourceTree = "<group>"; };
+		DA4DF6461A014C04004B61A3 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtility.m; sourceTree = "<group>"; };
+		DA4DF6481A014C1D004B61A3 /* AppUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtility.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 		DA36E58A19FE15F3005B6A60 /* ganmaqu */ = {
 			isa = PBXGroup;
 			children = (
+				DA4DF6451A014BB6004B61A3 /* Utility */,
 				DA36E58F19FE15F3005B6A60 /* AppDelegate.h */,
 				DA36E59019FE15F3005B6A60 /* AppDelegate.m */,
 				DA36E59519FE15F3005B6A60 /* ViewController.h */,
@@ -120,6 +124,15 @@
 				DA36E5A919FE15F3005B6A60 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DA4DF6451A014BB6004B61A3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DA4DF6461A014C04004B61A3 /* AppUtility.m */,
+				DA4DF6481A014C1D004B61A3 /* AppUtility.h */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +237,7 @@
 			files = (
 				DA36E59119FE15F3005B6A60 /* AppDelegate.m in Sources */,
 				DA36E59419FE15F3005B6A60 /* ganmaqu.xcdatamodeld in Sources */,
+				DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */,
 				DA36E59719FE15F3005B6A60 /* ViewController.m in Sources */,
 				DA36E58E19FE15F3005B6A60 /* main.m in Sources */,
 			);
