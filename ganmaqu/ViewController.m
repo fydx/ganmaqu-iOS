@@ -9,6 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *recommandButton;
+@property (strong, nonatomic) IBOutlet UIButton *typeButton;
+
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
+
 
 @end
 
