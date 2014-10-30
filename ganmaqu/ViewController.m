@@ -12,9 +12,8 @@
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *recommandButton;
 @property (strong, nonatomic) IBOutlet UIButton *typeButton;
-
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
-
+@property UIAlertView *alert;
 
 @end
 
@@ -33,7 +32,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)popupTypeSelectAlertView:(id)sender {
+     self.alert = [[UIAlertView alloc]initWithTitle:@"请选择出行类型" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"亲子出行", @"家人出行", @"情侣出行",nil];
+    [self.alert show];
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"clickButtonAtIndex:%ld",(long)buttonIndex);
+    NSLog(@"text %@",[self.alert buttonTitleAtIndex:buttonIndex]);
+    [self.typeButton setTitle:[self.alert buttonTitleAtIndex:buttonIndex] forState:UIControlStateNormal] ;
+}
 - (void)setWidget
 {
     //设置推荐商圈按钮样式
