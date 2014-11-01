@@ -29,7 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA36E58819FE15F3005B6A60 /* ganmaqu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ganmaqu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA36E58819FE15F3005B6A60 /* 干嘛去.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "干嘛去.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA36E58C19FE15F3005B6A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA36E58D19FE15F3005B6A60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA36E58F19FE15F3005B6A60 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		DA36E58919FE15F3005B6A60 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA36E58819FE15F3005B6A60 /* ganmaqu.app */,
+				DA36E58819FE15F3005B6A60 /* 干嘛去.app */,
 				DA36E5A419FE15F3005B6A60 /* ganmaquTests.xctest */,
 			);
 			name = Products;
@@ -152,7 +152,7 @@
 			);
 			name = ganmaqu;
 			productName = ganmaqu;
-			productReference = DA36E58819FE15F3005B6A60 /* ganmaqu.app */;
+			productReference = DA36E58819FE15F3005B6A60 /* 干嘛去.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DA36E5A319FE15F3005B6A60 /* ganmaquTests */ = {
@@ -364,7 +364,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ganmaqu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "干嘛去";
 			};
 			name = Debug;
 		};
@@ -375,7 +375,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ganmaqu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "干嘛去";
 			};
 			name = Release;
 		};

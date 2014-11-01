@@ -3,17 +3,17 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "button_go.png"
+      "filename" : "right.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "button_go@2x.png"
+      "filename" : "right@2x.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "3x",
-      "filename" : "button_go@2x-1.png"
+      "filename" : "right@2x-1.png"
     }
   ],
   "info" : {
