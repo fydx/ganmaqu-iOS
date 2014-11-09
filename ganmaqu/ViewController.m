@@ -8,12 +8,16 @@
 
 #import "ViewController.h"
 #import "AppUtility.h"
+#import "AFNetworking.h"
+#import "CirclePopUpViewController.h"
+
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *recommandButton;
 @property (strong, nonatomic) IBOutlet UIButton *typeButton;
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 @property UIAlertView *alert;
+@property UIAlertView *secondalert;
 @property (strong, nonatomic) IBOutlet UIImageView *rightCloudImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *leftCloudImageView;
 
@@ -24,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.useBlurForPopup = YES;
     [self setWidget];
     
     
@@ -33,6 +37,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)showCircles:(id)sender {
+    [self getCircles];
 }
 - (IBAction)popupTypeSelectAlertView:(id)sender {
      self.alert = [[UIAlertView alloc]initWithTitle:@"请选择出行类型" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"亲子出行", @"朋友出行", @"情侣出行",nil];
@@ -62,6 +69,7 @@
     _typeButton.layer.cornerRadius = 3.0;
     [self setLeftCloudAnimation];
     [self setRightCloudAnimation];
+    
 }
 
 - (void)setLeftCloudAnimation
@@ -89,6 +97,21 @@
     CGRect leftFrame = self.leftCloudImageView.frame;
     leftFrame.origin.x += 50;
     [self.leftCloudImageView setFrame:leftFrame];
-       [UIView commitAnimations];
+    [UIView commitAnimations];
+    
+}
+
+- (void)getCircles
+{
+    NSString *result = CIRCLES;
+    NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
+    NSDictionary *resultDict  = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
+    NSLog(@"result :%@",[resultDict objectForKey:@"success"]);
+//    NSArray *array = [[NSArray alloc]initWithObjects:@"first",@"second",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third" ,nil];
+//    SamplePopupViewController *samplePopupViewController = [[SamplePopupViewController alloc] initWithNibName:@"SamplePopupViewController" bundle:nil];
+//    [self presentPopupViewController:samplePopupViewController animated:YES completion:nil];
+//    [self setUseBlurForPopup:YES];
+    CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
+    [self presentPopupViewController:popupViewController animated:YES completion:nil];
 }
 @end

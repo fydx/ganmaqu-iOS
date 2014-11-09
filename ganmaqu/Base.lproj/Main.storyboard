@@ -48,21 +48,8 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-Hr-wpX">
-                                <rect key="frame" x="59" y="369" width="208" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="208" id="H1p-VH-7E3"/>
-                                    <constraint firstAttribute="height" constant="48" id="aMw-2z-eS1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                <size key="titleShadowOffset" width="2" height="2"/>
-                                <state key="normal" title="亲子出行">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
                                 <connections>
-                                    <action selector="popupTypeSelectAlertView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vbc-qp-UlR"/>
+                                    <action selector="showCircles:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hUU-g0-M4R"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="- 推荐商圈 -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCS-n9-U4K">
@@ -91,6 +78,22 @@
                                     <constraint firstAttribute="height" constant="137" id="kgs-rY-69I"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-Hr-wpX">
+                                <rect key="frame" x="60" y="369" width="208" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="H1p-VH-7E3"/>
+                                    <constraint firstAttribute="height" constant="48" id="aMw-2z-eS1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="亲子出行">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="popupTypeSelectAlertView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vbc-qp-UlR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.69411764705882351" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
