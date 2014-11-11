@@ -103,15 +103,19 @@
 
 - (void)getCircles
 {
-    NSString *result = CIRCLES;
-    NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
-    NSDictionary *resultDict  = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
-    NSLog(@"result :%@",[resultDict objectForKey:@"success"]);
-//    NSArray *array = [[NSArray alloc]initWithObjects:@"first",@"second",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third" ,nil];
+  //    NSArray *array = [[NSArray alloc]initWithObjects:@"first",@"second",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third",@"third" ,nil];
 //    SamplePopupViewController *samplePopupViewController = [[SamplePopupViewController alloc] initWithNibName:@"SamplePopupViewController" bundle:nil];
 //    [self presentPopupViewController:samplePopupViewController animated:YES completion:nil];
 //    [self setUseBlurForPopup:YES];
-    CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
+   
+
+     CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
+    popupViewController.popUpDismissDelegate = self;
     [self presentPopupViewController:popupViewController animated:YES completion:nil];
+   }
+
+- (void)dismissPopup
+{
+    [self dismissPopupViewControllerAnimated:YES completion:nil];
 }
 @end

@@ -281,7 +281,9 @@ NSString const *CWUseBlurForPopup = @"CWUseBlurForPopup";
 }
 
 - (void)dismissPopupViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+  
     UIView *blurView = objc_getAssociatedObject(self, &CWBlurViewKey);
+    NSLog(@"ready to dismiss");
     [self.popupViewController viewWillDisappear:YES];
     if (flag) { // animate
         CGRect initialFrame = self.popupViewController.view.frame;

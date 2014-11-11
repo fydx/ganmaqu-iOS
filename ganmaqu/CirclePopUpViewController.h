@@ -7,8 +7,8 @@
 //
 
 #import "UIViewController+CWPopup.h"
-
+#import "PopUpDismissProtocol.h"
 @interface CirclePopUpViewController : UIViewController
 
-
+@property (strong,nonatomic) id<PopUpDismissProtocol> popUpDismissDelegate;
 @end

@@ -8,11 +8,26 @@
 
 #import "CircleGridViewController.h"
 #import "CircleGridViewCell.h"
+
+@interface CircleGridViewController ()
+@property (strong,nonatomic) NSMutableArray *circleArray;
+
+@end
 @implementation CircleGridViewController
 
+-(CircleGridViewController *)initWithCircle : (NSMutableArray *)circleArray
+{
+    self = [super init];
+    self.circleArray = circleArray;
+    return self;
+}
+//- (void)setCircleArray:(NSMutableArray *)transcircleArray
+//{
+//    self.circleArray = transcircleArray;
+//}
 - (NSUInteger) numberOfItemsInGridView: (AQGridView *) aGridView
 {
-    return 9;
+    return _circleArray.count;
 }
 
 - (AQGridViewCell *)gridView:(AQGridView *)gridView cellForItemAtIndex:(NSUInteger)index
@@ -22,6 +37,7 @@
     if (cell == nil) {
         cell = [[CircleGridViewCell alloc]initWithFrame:CGRectMake(0.0, 0.0, 50.0, 20.0) reuseIdentifier:PlainCellIdentifier];
         cell.selectionGlowColor = [UIColor grayColor];
+        cell.circleNameLabel.text = [_circleArray objectAtIndex:index];
     }
     NSLog(@"init cell");
     return  cell;

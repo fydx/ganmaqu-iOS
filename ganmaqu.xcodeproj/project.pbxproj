@@ -51,6 +51,7 @@
 		DA36E5A419FE15F3005B6A60 /* ganmaquTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ganmaquTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA36E5A919FE15F3005B6A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA36E5AA19FE15F3005B6A60 /* ganmaquTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ganmaquTests.m; sourceTree = "<group>"; };
+		DA41B8551A1246EA00283922 /* PopUpDismissProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopUpDismissProtocol.h; sourceTree = "<group>"; };
 		DA4DF6461A014C04004B61A3 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtility.m; sourceTree = "<group>"; };
 		DA4DF6481A014C1D004B61A3 /* AppUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtility.h; sourceTree = "<group>"; };
 		DAB543DB1A0A5A97008D2C92 /* CirclePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePopUpViewController.m; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		DA36E58A19FE15F3005B6A60 /* ganmaqu */ = {
 			isa = PBXGroup;
 			children = (
+				DA41B8541A12460B00283922 /* protocol */,
 				DA4416441A0663220088CA17 /* data */,
 				DA4DF6451A014BB6004B61A3 /* Utility */,
 				DA36E58F19FE15F3005B6A60 /* AppDelegate.h */,
@@ -156,6 +158,14 @@
 				DA36E5A919FE15F3005B6A60 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DA41B8541A12460B00283922 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DA41B8551A1246EA00283922 /* PopUpDismissProtocol.h */,
+			);
+			name = protocol;
 			sourceTree = "<group>";
 		};
 		DA4416441A0663220088CA17 /* data */ = {

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 LiBin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UIViewController+CWPopup.h"
+#import "PopUpDismissProtocol.h"
 
-
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<PopUpDismissProtocol>
 
 
 @end

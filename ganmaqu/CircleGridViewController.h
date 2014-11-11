@@ -10,4 +10,6 @@
 #import "AQGridViewController.h"
 @interface CircleGridViewController : AQGridViewController
 
+//- (void)setCircleArray:(NSMutableArray *)transcircleArray;
+-(CircleGridViewController *)initWithCircle : (NSMutableArray *)circleArray;
 @end
