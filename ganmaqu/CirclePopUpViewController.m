@@ -53,7 +53,8 @@
 //
     self.gridViewController.view.frame = CGRectMake(0.0, 0.0, 310.0, 500.0);
     [self.gridViewController.collectionView setBackgroundColor:[UIColor clearColor]];
-    self.gridViewController.popupDismissProtocol = self.popUpDismissDelegate;
+    self.gridViewController.popupDismissProtocol = self.parentDelegate;
+    self.gridViewController.selectCircleProtocol = self.parentDelegate;
     [self.view addSubview:_gridViewController.view];
     [self.view addSubview:_backButton];
     [_gridViewController.collectionView reloadData];
@@ -78,7 +79,7 @@
 
     NSLog(@"button pressed!");
     //[self.presentedViewController dismissPopupViewControllerAnimated:YES completion:nil];
-    [self.popUpDismissDelegate dismissPopup];
+    [self.parentDelegate dismissPopup];
 
 }
 

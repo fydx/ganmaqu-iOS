@@ -55,8 +55,8 @@
     CircleGridViewCell *cell = (CircleGridViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:PlainCellIdentifier forIndexPath:indexPath];
         cell.contentView.backgroundColor = [UIColor grayColor];
               //cell.circleButton.titleLabel.text = [_circleArray objectAtIndex:index];
-        [cell.circleButton setTitle:[_circleArray objectAtIndex:(indexPath.item)+(indexPath.section * _sectionNumber)] forState:UIControlStateNormal];
-    [cell.circleButton addTarget:self action:@selector(circleClickEvent:event:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.circleLabel setText:[_circleArray objectAtIndex:(indexPath.item)+(indexPath.section * _sectionNumber)]];
+   
     NSLog(@"init cell %lu",indexPath.item);
     return  cell;
 }
@@ -70,7 +70,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CircleGridViewCell * cell = (CircleGridViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.circleLabel.backgroundColor = [UIColor whiteColor];
+    [self.popupDismissProtocol dismissPopup];
+    [self.selectCircleProtocol changeCircle:[_circleArray objectAtIndex:(indexPath.item)+(indexPath.section * _sectionNumber)]];
     NSLog(@"select");
 }
 

@@ -110,7 +110,7 @@
    
 //
      CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
-    popupViewController.popUpDismissDelegate = self;
+    popupViewController.parentDelegate = self;
     [self presentPopupViewController:popupViewController animated:YES completion:nil];
 //    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
 //    [self presentViewController:controller animated:YES completion:nil];
@@ -123,6 +123,6 @@
 }
 - (void)changeCircle:(NSString *)circleName
 {
-    _recommandButton.titleLabel.text = circleName;
+    [_recommandButton setTitle:circleName forState:UIControlStateNormal];
 }
 @end

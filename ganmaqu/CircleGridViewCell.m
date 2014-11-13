@@ -16,12 +16,12 @@
     if (self) {
         UIView* mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
         [mainView setBackgroundColor:[UIColor clearColor]];
-        self.circleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
-        [self.circleButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
-        [self.circleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.circleButton.titleLabel.text = @"123";
-        self.circleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [mainView addSubview:self.circleButton];
+        self.circleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
+        [self.circleLabel setFont:[UIFont systemFontOfSize:16]];
+        [self.circleLabel setTextColor:[UIColor whiteColor]];
+
+        self.circleLabel.textAlignment = NSTextAlignmentCenter;
+        [mainView addSubview:self.circleLabel];
         
         [self.contentView addSubview:mainView];
     }

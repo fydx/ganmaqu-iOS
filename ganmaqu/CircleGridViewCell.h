@@ -10,6 +10,6 @@
 
 @interface CircleGridViewCell : UICollectionViewCell
 
-@property (strong,nonatomic) UIButton *circleButton;
+@property (strong,nonatomic) UILabel *circleLabel;
 
 @end
