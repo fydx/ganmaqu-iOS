@@ -8,8 +8,9 @@
 
 #import "UIViewController+CWPopup.h"
 #import "PopUpDismissProtocol.h"
+#import "SelectCircleProtocol.h"
 
-@interface ViewController : UIViewController<PopUpDismissProtocol>
+@interface ViewController : UIViewController<PopUpDismissProtocol,SelectCircleProtocol>
 
 
 @end

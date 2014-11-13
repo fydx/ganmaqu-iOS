@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 LiBin. All rights reserved.
 //
 
-#import "AQGridViewCell.h"
+#import <UIKit/UIKit.h>
 
-@interface CircleGridViewCell : AQGridViewCell
+@interface CircleGridViewCell : UICollectionViewCell
 
-@property (strong,nonatomic) UILabel *circleNameLabel;
+@property (strong,nonatomic) UIButton *circleButton;
 
 @end

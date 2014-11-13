@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "AQGridViewController.h"
-@interface CircleGridViewController : AQGridViewController
+#import "SelectCircleProtocol.h"
+#import "PopUpDismissProtocol.h"
 
+@interface CircleGridViewController : UICollectionViewController
+
+@property (strong,nonatomic) id<SelectCircleProtocol> selectCircleProtocol;
+@property (strong,nonatomic) id<PopUpDismissProtocol> popupDismissProtocol;
 //- (void)setCircleArray:(NSMutableArray *)transcircleArray;
--(CircleGridViewController *)initWithCircle : (NSMutableArray *)circleArray;
+
+-(CircleGridViewController *)initWithCollectionViewLayoutAndCircle:(UICollectionViewLayout *)layout circle:(NSMutableArray *)circleArray;
 @end

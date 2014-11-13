@@ -10,17 +10,18 @@
 
 @implementation CircleGridViewCell
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier];
+    self = [super initWithFrame:frame];
     if (self) {
-        UIView* mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+        UIView* mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
         [mainView setBackgroundColor:[UIColor clearColor]];
-        self.circleNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
-        [self.circleNameLabel setFont:[UIFont systemFontOfSize:14]];
-        self.circleNameLabel.text = @"123";
-       
-        [mainView addSubview:self.circleNameLabel];
+        self.circleButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
+        [self.circleButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+        [self.circleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.circleButton.titleLabel.text = @"123";
+        self.circleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [mainView addSubview:self.circleButton];
         
         [self.contentView addSubview:mainView];
     }

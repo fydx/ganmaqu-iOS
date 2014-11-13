@@ -10,7 +10,7 @@
 #import "AppUtility.h"
 #import "AFNetworking.h"
 #import "CirclePopUpViewController.h"
-
+#import "CircleGridViewController.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *recommandButton;
@@ -108,14 +108,21 @@
 //    [self presentPopupViewController:samplePopupViewController animated:YES completion:nil];
 //    [self setUseBlurForPopup:YES];
    
-
+//
      CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
     popupViewController.popUpDismissDelegate = self;
     [self presentPopupViewController:popupViewController animated:YES completion:nil];
+//    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
+//    [self presentViewController:controller animated:YES completion:nil];
+ 
    }
 
 - (void)dismissPopup
 {
     [self dismissPopupViewControllerAnimated:YES completion:nil];
+}
+- (void)changeCircle:(NSString *)circleName
+{
+    _recommandButton.titleLabel.text = circleName;
 }
 @end
