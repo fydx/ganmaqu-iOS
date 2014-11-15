@@ -30,10 +30,14 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.useBlurForPopup = YES;
     [self setWidget];
-    
-    
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -108,7 +112,6 @@
 //    [self presentPopupViewController:samplePopupViewController animated:YES completion:nil];
 //    [self setUseBlurForPopup:YES];
    
-//
      CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
     popupViewController.parentDelegate = self;
     [self presentPopupViewController:popupViewController animated:YES completion:nil];

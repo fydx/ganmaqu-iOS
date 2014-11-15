@@ -14,16 +14,16 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIView* mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
-        [mainView setBackgroundColor:[UIColor clearColor]];
+        UIView* cellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
+      //  [cellView setBackgroundColor:[UIColor clearColor]];
         self.circleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 85, 30)];
         [self.circleLabel setFont:[UIFont systemFontOfSize:16]];
         [self.circleLabel setTextColor:[UIColor whiteColor]];
 
         self.circleLabel.textAlignment = NSTextAlignmentCenter;
-        [mainView addSubview:self.circleLabel];
+        [cellView addSubview:self.circleLabel];
         
-        [self.contentView addSubview:mainView];
+        [self.contentView addSubview:cellView];
     }
     return self;
 }

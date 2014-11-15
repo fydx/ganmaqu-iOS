@@ -89,11 +89,11 @@
     NSString *result = CIRCLES;
     NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
     NSDictionary *resultDict  = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
-    NSLog(@"result :%@",[resultDict objectForKey:@"success"]);
+  //  NSLog(@"result :%@",[resultDict objectForKey:@"success"]);
     NSArray *circleDictArray = [resultDict objectForKey:@"circles"];
     for (NSDictionary *circleDict in circleDictArray)
     {
-        NSLog(@"circle %@",[circleDict objectForKey:@"circleName"]);
+        //NSLog(@"circle %@",[circleDict objectForKey:@"circleName"]);
         NSString *circleName = [circleDict objectForKey:@"circleName"];
         [_circleArray addObject:circleName];
     }

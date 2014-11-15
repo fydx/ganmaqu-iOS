@@ -10,6 +10,9 @@
 		654813B164674522B672D13E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DC7AFF84BD481C9E4C0117 /* libPods.a */; };
 		9473A0F1A9734B00B12D58C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4DC7AFF84BD481C9E4C0117 /* libPods.a */; };
 		DA0C757C1A0F936700E21E24 /* CircleGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0C757B1A0F936700E21E24 /* CircleGridViewCell.m */; };
+		DA0E591E1A1789D0008D68EC /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0E591D1A1789D0008D68EC /* ResultViewController.m */; };
+		DA0E59221A17A231008D68EC /* ResultViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0E59211A17A231008D68EC /* ResultViewCell.m */; };
+		DA0E59281A17AA98008D68EC /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0E59271A17AA98008D68EC /* Place.m */; };
 		DA36E58E19FE15F3005B6A60 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA36E58D19FE15F3005B6A60 /* main.m */; };
 		DA36E59119FE15F3005B6A60 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA36E59019FE15F3005B6A60 /* AppDelegate.m */; };
 		DA36E59419FE15F3005B6A60 /* ganmaqu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA36E59219FE15F3005B6A60 /* ganmaqu.xcdatamodeld */; };
@@ -37,6 +40,12 @@
 		DA0C757A1A0F936700E21E24 /* CircleGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGridViewCell.h; sourceTree = "<group>"; };
 		DA0C757B1A0F936700E21E24 /* CircleGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGridViewCell.m; sourceTree = "<group>"; };
 		DA0C757D1A0FA58C00E21E24 /* CirclePopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CirclePopUpViewController.h; sourceTree = "<group>"; };
+		DA0E591C1A1789D0008D68EC /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		DA0E591D1A1789D0008D68EC /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		DA0E59201A17A231008D68EC /* ResultViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewCell.h; sourceTree = "<group>"; };
+		DA0E59211A17A231008D68EC /* ResultViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewCell.m; sourceTree = "<group>"; };
+		DA0E59261A17AA98008D68EC /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		DA0E59271A17AA98008D68EC /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		DA36E58819FE15F3005B6A60 /* 干嘛去.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "干嘛去.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA36E58C19FE15F3005B6A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA36E58D19FE15F3005B6A60 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +99,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA0E591F1A17A204008D68EC /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				DA0E591C1A1789D0008D68EC /* ResultViewController.h */,
+				DA0E591D1A1789D0008D68EC /* ResultViewController.m */,
+				DA0E59201A17A231008D68EC /* ResultViewCell.h */,
+				DA0E59211A17A231008D68EC /* ResultViewCell.m */,
+			);
+			name = Result;
+			sourceTree = "<group>";
+		};
 		DA36E57F19FE15F3005B6A60 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +133,7 @@
 		DA36E58A19FE15F3005B6A60 /* ganmaqu */ = {
 			isa = PBXGroup;
 			children = (
+				DA0E591F1A17A204008D68EC /* Result */,
 				DA41B8541A12460B00283922 /* protocol */,
 				DA4416441A0663220088CA17 /* data */,
 				DA4DF6451A014BB6004B61A3 /* Utility */,
@@ -173,6 +194,8 @@
 		DA4416441A0663220088CA17 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				DA0E59261A17AA98008D68EC /* Place.h */,
+				DA0E59271A17AA98008D68EC /* Place.m */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -358,9 +381,12 @@
 				DA0C757C1A0F936700E21E24 /* CircleGridViewCell.m in Sources */,
 				DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */,
 				DAB543DF1A0A6198008D2C92 /* CircleGridViewController.m in Sources */,
+				DA0E59281A17AA98008D68EC /* Place.m in Sources */,
 				DAB543DC1A0A5A97008D2C92 /* CirclePopUpViewController.m in Sources */,
 				DA36E59719FE15F3005B6A60 /* ViewController.m in Sources */,
+				DA0E59221A17A231008D68EC /* ResultViewCell.m in Sources */,
 				DA36E58E19FE15F3005B6A60 /* main.m in Sources */,
+				DA0E591E1A1789D0008D68EC /* ResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
