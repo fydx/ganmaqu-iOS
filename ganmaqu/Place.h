@@ -10,12 +10,12 @@
 
 @interface Place : NSObject
 
-@property (nonatomic) double lat;
-@property (nonatomic) double lng;
+@property (strong,nonatomic) NSNumber *lat;
+@property (strong,nonatomic) NSNumber *lng;
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *type;
 @property (strong,nonatomic) NSString *address;
-@property (nonatomic) int cost;
+@property (strong,nonatomic) NSNumber *cost;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end

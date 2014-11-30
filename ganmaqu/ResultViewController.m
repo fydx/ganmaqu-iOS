@@ -7,34 +7,76 @@
 //
 
 #import "ResultViewController.h"
+#import "ResultViewCell.h"
 #import "AppUtility.h"
+#import "Place.h"
+@interface ResultViewController()
+@property (strong,nonatomic) NSMutableArray *placeArray;
+
+@end
+
 @implementation ResultViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
     self.navigationController.navigationBar.hidden = NO;
-    [self parseJSON];
+    
+    [self parseRouteJSON];
+    [self.tableView registerClass:[ResultViewCell class] forCellReuseIdentifier:@"CustomCell"];
     
     
 }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"CustomCell";
+    ResultViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+   // ResultViewCell  *cell = [[ResultViewCell alloc]initWithPlaceAndStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier place:[_placeArray objectAtIndex:indexPath.row] number:indexPath.row];
+     if (cell == nil) {
+    cell = [[ResultViewCell alloc]initWithPlaceAndStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier place:[_placeArray objectAtIndex:indexPath.row] number:indexPath.row];
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }else
+    {
+        [cell setViews:[_placeArray objectAtIndex:indexPath.row] number:indexPath.row];
+    }
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    return cell;
+}
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _placeArray.count;
+}
 
-- (void)parseJSON
+- (void)parseRouteJSON
 {
     NSString *result = ROUTE;
     NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
     NSDictionary *resultDict  = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
     NSDictionary *placeResult = resultDict[@"data"];
+    _placeArray = [[NSMutableArray alloc]init];
    // NSLog(@"data %@",placeResult);
     //NSData *placeData = [placeResult dataUsingEncoding: NSUTF8StringEncoding];
 //    NSDictionary *placeDict = [NSJSONSerialization JSONObjectWithData:placeData options:NSJSONReadingMutableLeaves error:nil];
        NSArray *placeDictArray = [placeResult objectForKey:@"places"];
-    for (NSDictionary *singleplaceDict in placeDictArray)
+    for (NSDictionary *singlePlaceDict in placeDictArray)
     {
         //NSLog(@"circle %@",[circleDict objectForKey:@"circleName"]);
-        NSString *placeName = [singleplaceDict objectForKey:@"name"];
-        NSLog(@"place name %@",placeName);
+        Place *singlePlace = [[Place alloc]init];
+        singlePlace.name = [singlePlaceDict objectForKey:@"name"];
+        singlePlace.address = [singlePlaceDict objectForKey:@"address"];
+        singlePlace.lat = [singlePlaceDict objectForKey:@"lat"];
+        singlePlace.lng = [singlePlaceDict objectForKey:@"lng"];
+        singlePlace.cost = [singlePlaceDict objectForKey:@"cost"];
+        singlePlace.type = [singlePlaceDict objectForKey:@"type"];
+        [_placeArray addObject:singlePlace];
     }
+
 
 }
 @end

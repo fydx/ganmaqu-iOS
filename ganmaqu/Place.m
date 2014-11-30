@@ -13,12 +13,12 @@
 {
     
     if (self = [super init]) {
-        self.lat = [dict[@"lat"] doubleValue];
-        self.lng = [dict[@"lng"] doubleValue];
+        self.lat = dict[@"lat"];
+        self.lng = dict[@"lng"];
         self.name = dict[@"name"];
         self.type = dict[@"name"];
         self.address = dict[@"address"];
-        self.cost = [dict[@"cost"] intValue];
+        self.cost = dict[@"cost"];
         
         
     }

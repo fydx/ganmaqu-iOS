@@ -54,7 +54,7 @@
     static NSString * PlainCellIdentifier = @"PlainCellIdentifier";
     CircleGridViewCell *cell = (CircleGridViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:PlainCellIdentifier forIndexPath:indexPath];
         cell.contentView.backgroundColor = [UIColor grayColor];
-              //cell.circleButton.titleLabel.text = [_circleArray objectAtIndex:index];
+        //cell.circleButton.titleLabel.text = [_circleArray objectAtIndex:index];
         [cell.circleLabel setText:[_circleArray objectAtIndex:(indexPath.item)+(indexPath.section * _sectionNumber)]];
    
     NSLog(@"init cell %lu",indexPath.item);

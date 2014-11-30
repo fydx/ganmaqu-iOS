@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Place.h"
 @interface ResultViewCell : UITableViewCell
 
+- (instancetype)initWithPlaceAndStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier place:(Place *)place number:(NSInteger )number;
+- (void)setViews:(Place *)place number:(NSInteger )number;
 @end
