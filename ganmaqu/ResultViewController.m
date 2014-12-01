@@ -22,11 +22,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationController.navigationBar.hidden = NO;
-    
+     self.title =@"推荐路线";
     [self parseRouteJSON];
     [self.tableView registerClass:[ResultViewCell class] forCellReuseIdentifier:@"CustomCell"];
+    //self.tableView.layer.cornerRadius = 10.0;
+    //self.tableView.layer.masksToBounds = YES;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setBackgroundColor:UIColorFromRGB(RESULTBGCOLOR)];
     
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -38,15 +51,17 @@
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else
     {
-        [cell setViews:[_placeArray objectAtIndex:indexPath.row] number:indexPath.row];
+        [cell setViews:[_placeArray objectAtIndex:indexPath.row] number:indexPath.row+1];
     }
+
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
+
     return cell;
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 114;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -76,7 +91,6 @@
         singlePlace.type = [singlePlaceDict objectForKey:@"type"];
         [_placeArray addObject:singlePlace];
     }
-
 
 }
 @end

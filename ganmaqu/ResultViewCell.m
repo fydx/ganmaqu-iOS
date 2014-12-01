@@ -8,6 +8,7 @@
 
 #import "ResultViewCell.h"
 #import "Masonry.h"
+#import "AppUtility.h"
 
 @interface ResultViewCell()
 
@@ -33,10 +34,14 @@
     NSLog(@"cell init");
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        //self.contentView.layer.masksToBounds = YES;
+        //self.contentView.layer.cornerRadius = 20.0;
         [self createView];
-        [self bindData:place];
         [self setNumber:number];
-        [self setLayout];
+        [self setMASLayout];
+        [self setViewStyle];
+        [self bindData:place];
+
 
     }
     return self;
@@ -44,24 +49,42 @@
 
 - (void)setViews:(Place *)place number:(NSInteger )number
 {
-      [self createView];
-    [self bindData:place];
+    [self createView];
     [self setNumber:number];
     //[self setLayout];
     [self setMASLayout];
-    //self.translatesAutoresizingMaskIntoConstraints = NO;
+    [self setViewStyle];
+    [self bindData:place];
 
 }
+
 - (void)bindData:(Place *)place
 {
     _shopNameLabel.text = place.name;
-    _shopNameLabel.backgroundColor  = [UIColor grayColor];
     _addressLabel.text = place.address;
     _typeLabel.text = place.type;
     _costLabel.text = [NSString stringWithFormat:@"%d",[place.cost intValue]];
-    [_numberLabel setFont:[UIFont systemFontOfSize:56]];
-    [_addressLabel setFont:[UIFont systemFontOfSize:15]];
+    [_costImage setImage:[UIImage imageNamed:@"resultpage_icon_cost"]];
+    [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_eat"]];
    // _costLabel.backgroundColor = [UIColor blueColor];
+}
+
+-(void)setViewStyle
+{
+    [_numberLabel setFont:[UIFont systemFontOfSize:62]];
+    [_addressLabel setFont:[UIFont systemFontOfSize:13]];
+    [_addressLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
+    [_shopNameLabel setFont:[UIFont systemFontOfSize:28]];
+    [_typeLabel setFont:[UIFont systemFontOfSize:15]];
+    [_typeLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
+    [_costLabel setFont:[UIFont systemFontOfSize:15]];
+    [_costLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
+    [_numberLabel setTextColor:[UIColor lightGrayColor]];
+    [_upView setBackgroundColor:UIColorFromRGB(0xf2f2f2)];
+    [self.contentView setBackgroundColor:UIColorFromRGB(RESULTBGCOLOR)];
+    [_downView setBackgroundColor:UIColorFromRGB(0xffffff)];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+
 }
 - (void)setNumber:(NSInteger )number
 {
@@ -98,15 +121,19 @@
     [_downView addSubview:_costImage];
     [_downView addSubview:_costLabel];
 //     _mainView = [[UIView alloc]init];
-    //[self.contentView addSubview:_upView];
+  //[self.contentView addSubview:_upView];
     //[self.contentView addSubview:_downView];
 //    _mainView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:_upView];
     [self.contentView addSubview:_downView];
 //    [self.contentView addSubview:_mainView];
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_upView.bounds byRoundingCorners:UIRectCornerBottomLeft cornerRadii:CGSizeMake(10, 10)];
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.frame = _upView.bounds;
+//    maskLayer.path = maskPath.CGPath;
+//    _upView.layer.mask = maskLayer;
     
 }
-
 -(void)setLayout
 {
     NSString *mainVFL = @"V:|-20-[_upView(50)]-10-[_downView]-20-|";
@@ -126,11 +153,12 @@
 -(void)setMASLayout
 {
     int padding = 10;
+    int leftPadding = 20;
     [_upView mas_makeConstraints:^(MASConstraintMaker *make)
     {
       make.top.equalTo(self.contentView).offset(padding);
       make.left.equalTo(self.contentView).offset(padding);
-      make.bottom.equalTo(_downView.mas_top);
+      //make.bottom.equalTo(_downView.mas_top);
       make.right.equalTo(self.contentView).offset(-padding);
       //make.height.lessThanOrEqualTo(@70);
     }
@@ -140,13 +168,13 @@
       make.top.equalTo(_upView.mas_bottom);
       make.left.equalTo(_upView.mas_left);
       make.right.equalTo(_upView.mas_right);
-      make.bottom.equalTo(self.contentView).offset(-padding);
-      //make.height.greaterThanOrEqualTo(@30);
+      make.bottom.equalTo(self.contentView.mas_bottom);
+
     }];
     [_numberLabel mas_makeConstraints:^(MASConstraintMaker *make)
     {
        make.top.equalTo(_upView);
-       make.left.equalTo(_upView);
+       make.left.equalTo(_upView).offset(padding);
        //make.width.equalTo(@30);
        make.bottom.equalTo(_upView);
     }];
@@ -155,15 +183,48 @@
     {
       make.top.equalTo(_upView);
       make.left.equalTo(_numberLabel.mas_right).offset(padding);
-      make.bottom.equalTo(_upView).offset;
+      make.bottom.equalTo(_upView);
     }
     ];
     [_shopNameLabel mas_makeConstraints:^(MASConstraintMaker *make)
     {
       make.top.equalTo(_shopInfoView).offset(padding);
       make.left.equalTo(_shopInfoView);
+    }
+    ];
+    [_addressLabel mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+      make.top.equalTo(_shopNameLabel.mas_bottom).offset(3);
+      make.left.equalTo(_shopInfoView);
 
     }
     ];
+    [_typeImage mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+      make.top.equalTo(_upView);
+      make.right.equalTo(_upView);
+      make.width.greaterThanOrEqualTo(@46);
+      make.height.greaterThanOrEqualTo(@46);
+    }
+    ];
+    [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+       make.top.equalTo(_downView).offset(3);
+       make.left.equalTo(_downView).offset(padding+3);
+    }
+    ];
+    [_costLabel mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.top.equalTo(_typeLabel);
+        make.right.equalTo(_downView).offset(-leftPadding);
+    }];
+    [_costImage mas_makeConstraints:^(MASConstraintMaker *make)
+    {
+        make.top.equalTo(_costLabel).offset(2);
+        make.right.equalTo(_costLabel.mas_left).offset(-5);
+    }
+    ];
+
+
 }
 @end
