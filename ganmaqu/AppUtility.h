@@ -12,7 +12,8 @@
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-#define IPADDRESS @"http://192.168.1.102:8080"
+#define IPADDRESS @"http://localhost:8080"
+#define CITY @"西安市"
 #define RESULTBGCOLOR  0xebebeb
 #define RESULTTEXTCOLOR 0x504e4e
 #define CITIES @"{\"success\": true,\"cities\" :[{\"cityId\": 1, \"cityName\" : \"西安市\"},{\"cityId\": 2,\"cityName\" : \"北京市\"}]}"

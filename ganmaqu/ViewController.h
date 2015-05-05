@@ -9,8 +9,9 @@
 #import "UIViewController+CWPopup.h"
 #import "PopUpDismissProtocol.h"
 #import "SelectCircleProtocol.h"
+#import <BaiduMapAPI/BMKLocationService.h>
 
-@interface ViewController : UIViewController<PopUpDismissProtocol,SelectCircleProtocol>
+@interface ViewController : UIViewController<PopUpDismissProtocol,SelectCircleProtocol,BMKLocationServiceDelegate>
 
 
 @end

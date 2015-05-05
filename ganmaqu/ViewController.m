@@ -13,13 +13,15 @@
 #import "CircleGridViewController.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) IBOutlet UIButton *recommandButton;
-@property (strong, nonatomic) IBOutlet UIButton *typeButton;
-@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
-@property UIAlertView *alert;
-@property UIAlertView *secondalert;
-@property (strong, nonatomic) IBOutlet UIImageView *rightCloudImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *leftCloudImageView;
+@property (strong, nonatomic) IBOutlet UIButton           *recommandButton;
+@property (strong, nonatomic) IBOutlet UIButton           *typeButton;
+@property (strong, nonatomic) IBOutlet UIButton           *confirmButton;
+@property (strong, nonatomic) IBOutlet UIImageView        *rightCloudImageView;
+@property (strong, nonatomic) IBOutlet UIImageView        *leftCloudImageView;
+@property (strong, nonatomic) UIAlertView        *alert;
+@property (strong, nonatomic) UIAlertView        *secondalert;
+@property (strong, nonatomic) BMKLocationService *locService;
+@property (nonatomic, assign) CLLocationCoordinate2D    locationCoordinate;
 
 @end
 
@@ -28,6 +30,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSString *identifier = [[NSBundle mainBundle] bundleIdentifier];
+    NSLog(@"%@",identifier);
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+    {
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    _locService = [[BMKLocationService alloc]init];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+         [_locService startUserLocationService];
+    });
+    
     self.useBlurForPopup = YES;
     [self setWidget];
 }
@@ -35,9 +48,45 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _locService.delegate = self;
     self.navigationController.navigationBar.hidden = YES;
-
 }
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    _locService.delegate = nil;
+}
+/**
+ *在地图View将要启动定位时，会调用此函数
+ *@param mapView 地图View
+ */
+- (void)willStartLocatingUser
+{
+    NSLog(@"start locate");
+}
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    if ( CLLocationCoordinate2DIsValid(userLocation.location.coordinate)) {
+        self.locationCoordinate = userLocation.location.coordinate;
+        [self requestCurrentCircle];
+        [self.locService stopUserLocationService];
+    }
+    //[_mapView updateLocationData:userLocation];
+}
+/**
+ *定位失败后，会调用此函数
+ *@param mapView 地图View
+ *@param error 错误号，参考CLError.h中定义的错误号
+ */
+- (void)didFailToLocateUserWithError:(NSError *)error
+{
+    NSLog(@"location error");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -46,6 +95,7 @@
     [self getCircles];
 }
 - (IBAction)popupTypeSelectAlertView:(id)sender {
+   
      self.alert = [[UIAlertView alloc]initWithTitle:@"请选择出行类型" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"亲子出行", @"朋友出行", @"情侣出行",nil];
     [self.alert show];
 }
@@ -118,7 +168,7 @@
 //    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
 //    [self presentViewController:controller animated:YES completion:nil];
  
-   }
+}
 
 - (void)dismissPopup
 {
@@ -128,4 +178,33 @@
 {
     [_recommandButton setTitle:circleName forState:UIControlStateNormal];
 }
+#pragma mark 网络交互
+
+-(void)requestCurrentCircle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameters = @{@"city": CITY,@"pos_x": [NSString stringWithFormat:@"%lf",self.locationCoordinate.longitude],@"pos_y":[NSString stringWithFormat:@"%lf",self.locationCoordinate.latitude]};
+    NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=getshopcircle"];
+    __weak typeof(self) weakMe = self;
+    [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __strong typeof(self) strongMe = weakMe;
+        NSString *circle = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"获取当前商圈: %@", circle);
+        strongMe.recommandButton.titleLabel.text = circle;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+//- (NSString *)requestCircleJSON
+//{
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSDictionary *parameters = @{@"foo": @"bar"};
+//    [manager POST:@"http://example.com/resources.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"JSON: %@", responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
+//}
 @end
