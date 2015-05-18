@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 
 @interface Place : NSObject
 
-@property (strong,nonatomic) NSNumber *lat;
-@property (strong,nonatomic) NSNumber *lng;
-@property (strong,nonatomic) NSString *name;
-@property (strong,nonatomic) NSString *type;
-@property (strong,nonatomic) NSString *address;
-@property (strong,nonatomic) NSNumber *cost;
+@property (assign,nonatomic) CGFloat    lat;
+@property (assign,nonatomic) CGFloat    lng;
+@property (strong,nonatomic) NSString   *name;
+@property (strong,nonatomic) NSString   *type;
+@property (strong,nonatomic) NSString   *address;
+@property (assign,nonatomic) NSUInteger cost;
+@property (assign,nonatomic) NSUInteger rate;
+@property (strong,nonatomic) NSString   *time;
+@property (assign,nonatomic) NSUInteger weight;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end

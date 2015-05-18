@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="z5I-0w-4b8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="z5I-0w-4b8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -36,18 +36,18 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="H0d-7b-Z7p" kind="push" id="v4R-iS-loZ"/>
+                                    <action selector="enterResultPage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="a6j-6N-Vue"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-uN-brp">
-                                <rect key="frame" x="60" y="302" width="208" height="30"/>
+                            <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcC-uN-brp">
+                                <rect key="frame" x="60" y="302" width="208" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Iht-KJ-C6G"/>
                                     <constraint firstAttribute="width" constant="208" id="Wka-tH-9CF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="定位中，请稍等...">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -124,7 +124,7 @@
                     <navigationItem key="navigationItem" id="mPZ-c1-G6L"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="confirmButton" destination="JCR-SY-4zS" id="Kab-hc-6Kn"/>
+                        <outlet property="confirmButton" destination="JCR-SY-4zS" id="FLz-Dk-ntO"/>
                         <outlet property="leftCloudImageView" destination="Wsz-gz-25a" id="6KU-Hc-jNp"/>
                         <outlet property="recommandButton" destination="gcC-uN-brp" id="zVB-Cu-fpA"/>
                         <outlet property="rightCloudImageView" destination="elq-iG-iUf" id="cVm-4C-T5S"/>
@@ -138,7 +138,7 @@
         <!--推荐路线-->
         <scene sceneID="Wul-HV-9kV">
             <objects>
-                <tableViewController title="推荐路线" id="H0d-7b-Z7p" customClass="ResultViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="resultController" title="推荐路线" id="H0d-7b-Z7p" customClass="ResultViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kff-Om-pZZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ResultViewController : UITableViewController
+@property (strong,nonatomic) NSMutableArray *places;
+@property (strong,nonatomic) NSString       *type;
 
 @end

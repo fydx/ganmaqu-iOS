@@ -11,16 +11,15 @@
 @implementation Place
 - (id)initWithDictionary:(NSDictionary *)dict;
 {
-    
     if (self = [super init]) {
-        self.lat = dict[@"lat"];
-        self.lng = dict[@"lng"];
-        self.name = dict[@"name"];
-        self.type = dict[@"name"];
+        self.lat = [dict[@"pos_y"] floatValue];
+        self.lng = [dict[@"pos_x"] floatValue];
+        self.name = dict[@"shopName"];
+        self.type = dict[@"mainType"];
         self.address = dict[@"address"];
-        self.cost = dict[@"cost"];
-        
-        
+        self.time = dict[@"time"];
+        self.cost = [dict[@"cost"] unsignedIntegerValue];
+        self.rate = [dict[@"rate"] unsignedIntegerValue];
     }
     return self;
 }

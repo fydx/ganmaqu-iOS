@@ -1,36 +1,41 @@
 PODS:
-  - AFNetworking (2.4.1):
+  - AFNetworking (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.4.1):
+  - AFNetworking/NSURLConnection (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.4.1):
+  - AFNetworking/NSURLSession (2.5.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.4.1)
-  - AFNetworking/Security (2.4.1)
-  - AFNetworking/Serialization (2.4.1)
-  - AFNetworking/UIKit (2.4.1):
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CWPopup (1.2.5)
+  - CWPopup (1.2.6)
   - Masonry (0.5.3)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.7.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CWPopup (~> 1.2.5)
   - Masonry (~> 0.5.3)
+  - SDWebImage
 
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  CWPopup: 78985e84f8a62de13cf67aa287496d14ce6107aa
-  Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  CWPopup: 3f8b0704a9914813d90372d66525d31f24b27d49
+  Masonry: 9f515466afe48632562342a40a1c224071a1a022
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.33.1

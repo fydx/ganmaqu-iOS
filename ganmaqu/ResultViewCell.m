@@ -49,11 +49,13 @@
 
 - (void)setViews:(Place *)place number:(NSInteger )number
 {
-    [self createView];
-    [self setNumber:number];
-    //[self setLayout];
-    [self setMASLayout];
-    [self setViewStyle];
+    if (!self.numberLabel) {
+        [self createView];
+        [self setNumber:number];
+        //[self setLayout];
+        [self setMASLayout];
+        [self setViewStyle];
+    }
     [self bindData:place];
 
 }
@@ -63,7 +65,7 @@
     _shopNameLabel.text = place.name;
     _addressLabel.text = place.address;
     _typeLabel.text = place.type;
-    _costLabel.text = [NSString stringWithFormat:@"%d",[place.cost intValue]];
+    _costLabel.text = [NSString stringWithFormat:@"%ld",place.cost];
     [_costImage setImage:[UIImage imageNamed:@"resultpage_icon_cost"]];
     [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_eat"]];
    // _costLabel.backgroundColor = [UIColor blueColor];
@@ -75,6 +77,9 @@
     [_addressLabel setFont:[UIFont systemFontOfSize:13]];
     [_addressLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
     [_shopNameLabel setFont:[UIFont systemFontOfSize:28]];
+    self.shopNameLabel.numberOfLines = 1;
+    self.shopNameLabel.minimumScaleFactor = 0.1;
+    self.shopNameLabel.adjustsFontSizeToFitWidth = YES;
     [_typeLabel setFont:[UIFont systemFontOfSize:15]];
     [_typeLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
     [_costLabel setFont:[UIFont systemFontOfSize:15]];

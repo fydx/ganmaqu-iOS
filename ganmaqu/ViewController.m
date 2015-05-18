@@ -11,17 +11,22 @@
 #import "AFNetworking.h"
 #import "CirclePopUpViewController.h"
 #import "CircleGridViewController.h"
+#import "ResultViewController.h"
+#import "Place.h"
+#import "JSONKit.h"
 
 @interface ViewController ()
-@property (strong, nonatomic) IBOutlet UIButton           *recommandButton;
-@property (strong, nonatomic) IBOutlet UIButton           *typeButton;
-@property (strong, nonatomic) IBOutlet UIButton           *confirmButton;
-@property (strong, nonatomic) IBOutlet UIImageView        *rightCloudImageView;
-@property (strong, nonatomic) IBOutlet UIImageView        *leftCloudImageView;
-@property (strong, nonatomic) UIAlertView        *alert;
-@property (strong, nonatomic) UIAlertView        *secondalert;
-@property (strong, nonatomic) BMKLocationService *locService;
-@property (nonatomic, assign) CLLocationCoordinate2D    locationCoordinate;
+@property (strong, nonatomic) IBOutlet UIButton               *recommandButton;
+@property (strong, nonatomic) IBOutlet UIButton               *typeButton;
+@property (strong, nonatomic) IBOutlet UIImageView            *rightCloudImageView;
+@property (strong, nonatomic) IBOutlet UIImageView            *leftCloudImageView;
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
+@property (strong, nonatomic) UIAlertView            *alert;
+@property (strong, nonatomic) UIAlertView            *secondalert;
+@property (strong, nonatomic) BMKLocationService     *locService;
+@property (nonatomic, assign) CLLocationCoordinate2D locationCoordinate;
+@property (strong, nonatomic) NSString  *circleLat;
+@property (strong, nonatomic) NSString  *circleLng;
 
 @end
 
@@ -40,7 +45,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
          [_locService startUserLocationService];
     });
-    
+
+    self.recommandButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.useBlurForPopup = YES;
     [self setWidget];
 }
@@ -99,6 +105,12 @@
      self.alert = [[UIAlertView alloc]initWithTitle:@"请选择出行类型" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"亲子出行", @"朋友出行", @"情侣出行",nil];
     [self.alert show];
 }
+- (IBAction)enterResultPage:(id)sender {
+    //    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
+    //    [self presentViewController:controller animated:YES completion:nil];
+   // ResultViewController *resultViewController = [[ResultViewController alloc]init];
+  
+}
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -137,7 +149,6 @@
     CGRect rightFrame = self.rightCloudImageView.frame;
     rightFrame.origin.x -= 50;
     [self.rightCloudImageView setFrame:rightFrame];
-    
     [UIView commitAnimations];
 }
 - (void)setRightCloudAnimation
@@ -179,7 +190,9 @@
     [_recommandButton setTitle:circleName forState:UIControlStateNormal];
 }
 #pragma mark 网络交互
-
+/**
+ *  获取当前商圈
+ */
 -(void)requestCurrentCircle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -192,11 +205,59 @@
         NSString *circle = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"获取当前商圈: %@", circle);
         strongMe.recommandButton.titleLabel.text = circle;
+        [strongMe requestCircleLocation:circle];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"requestCurrentCircle Error: %@", error);
     }];
 }
 
+/**
+ *  获取整条出行路线
+ */
+
+-(void)requestFullRoute
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameters = @{@"type" : self.typeButton.titleLabel.text,@"pos_x": self.self.circleLng,@"pos_y":self.circleLat,@"json" : @"[]",@"id" : @"root",@"command": @"full"};
+    __weak typeof(self) weakMe = self;
+    [manager POST:IPADDRESS parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __strong typeof(self) strongMe = weakMe;
+        NSString *responseString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        
+        ResultViewController *resultViewController = (ResultViewController*)[storyboard instantiateViewControllerWithIdentifier:@"resultController"];
+        resultViewController.places = [self parseRouteJSON:responseString];
+        resultViewController.type = self.typeButton.titleLabel.text;
+        [strongMe.navigationController pushViewController:resultViewController animated:YES];
+        
+        //[self parseRouteJSON:responseString];
+        NSLog(@"routeJSON : %@",responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"request full route error : %@",error);
+    }];
+}
+
+-(void)requestCircleLocation : (NSString *)circle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSDictionary *parameters = @{@"city": CITY,@"circleName":circle};
+    NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=circlepos"];
+    __weak typeof(self) weakMe = self;
+    [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __strong typeof(self) strongMe = weakMe;
+        NSLog(@"circle locatino : %@",responseObject);
+         NSDictionary *dic = responseObject;
+        strongMe.circleLat = dic[@"lat"];
+        strongMe.circleLng = dic[@"lng"];
+        [strongMe requestFullRoute];
+        }
+        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"requestCircleLocation Error: %@", error);
+    }];
+}
 //- (NSString *)requestCircleJSON
 //{
 //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -207,4 +268,20 @@
 //        NSLog(@"Error: %@", error);
 //    }];
 //}
+- (NSMutableArray *)parseRouteJSON :(NSString *)result
+{
+    NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
+//    NSDictionary *resultDict  = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableLeaves error:nil];
+//    NSDictionary *placeResult = resultDict[@"data"];
+    NSArray *jsonArray = [resultData objectFromJSONData];
+    NSMutableArray *places = [[NSMutableArray alloc]init];
+    for (NSDictionary *placeDict in jsonArray) {
+        Place *place = [[Place alloc]initWithDictionary:placeDict];
+        [places addObject:place];
+        //NSLog(@"placeDict : %@",placeDict[@"address"]);
+    }
+
+    return places;
+    
+}
 @end

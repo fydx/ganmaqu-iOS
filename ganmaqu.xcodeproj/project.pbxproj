@@ -28,6 +28,8 @@
 		DA36E59C19FE15F3005B6A60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA36E59B19FE15F3005B6A60 /* Images.xcassets */; };
 		DA36E59F19FE15F3005B6A60 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA36E59D19FE15F3005B6A60 /* LaunchScreen.xib */; };
 		DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4DF6461A014C04004B61A3 /* AppUtility.m */; };
+		DA5694971B0A4EF3004A5411 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5694961B0A4EF3004A5411 /* Reveal.framework */; };
+		DA5A2D811B08D7EE008A6E5B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5A2D801B08D7EE008A6E5B /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DAB543DC1A0A5A97008D2C92 /* CirclePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB543DB1A0A5A97008D2C92 /* CirclePopUpViewController.m */; };
 		DAB543DF1A0A6198008D2C92 /* CircleGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB543DE1A0A6198008D2C92 /* CircleGridViewController.m */; };
 /* End PBXBuildFile section */
@@ -65,9 +67,13 @@
 		DA41B8561A12576100283922 /* SelectCircleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCircleProtocol.h; sourceTree = "<group>"; };
 		DA4DF6461A014C04004B61A3 /* AppUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtility.m; sourceTree = "<group>"; };
 		DA4DF6481A014C1D004B61A3 /* AppUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtility.h; sourceTree = "<group>"; };
+		DA5694961B0A4EF3004A5411 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		DA5A2D7F1B08D7EE008A6E5B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit.h; sourceTree = "<group>"; };
+		DA5A2D801B08D7EE008A6E5B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		DAB543DB1A0A5A97008D2C92 /* CirclePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePopUpViewController.m; sourceTree = "<group>"; };
 		DAB543DD1A0A6198008D2C92 /* CircleGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGridViewController.h; sourceTree = "<group>"; };
 		DAB543DE1A0A6198008D2C92 /* CircleGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGridViewController.m; sourceTree = "<group>"; };
+		DAB5F9AC1B087076004E4ADB /* XianLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XianLocation.gpx; sourceTree = "<group>"; };
 		E4DC7AFF84BD481C9E4C0117 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0884FAC8B0B41C4A3196C44 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5694971B0A4EF3004A5411 /* Reveal.framework in Frameworks */,
 				DA293EDC1AF8AC660033CC8F /* Security.framework in Frameworks */,
 				DA293EDA1AF8AC620033CC8F /* CoreGraphics.framework in Frameworks */,
 				DA293ED81AF8AC570033CC8F /* SystemConfiguration.framework in Frameworks */,
@@ -94,6 +101,7 @@
 		5EA5C364BEC14E3899FF8D75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA5694961B0A4EF3004A5411 /* Reveal.framework */,
 				DA293EDB1AF8AC660033CC8F /* Security.framework */,
 				DA293ED91AF8AC620033CC8F /* CoreGraphics.framework */,
 				DA293ED71AF8AC570033CC8F /* SystemConfiguration.framework */,
@@ -138,6 +146,8 @@
 		DA36E58A19FE15F3005B6A60 /* ganmaqu */ = {
 			isa = PBXGroup;
 			children = (
+				DA5A2D7E1B08D7E1008A6E5B /* JSONKit */,
+				DAB5F9AB1B087053004E4ADB /* Other */,
 				DA293EDD1AF8ACC00033CC8F /* mapapi.bundle */,
 				DA0E591F1A17A204008D68EC /* Result */,
 				DA41B8541A12460B00283922 /* protocol */,
@@ -196,6 +206,23 @@
 				DA4DF6481A014C1D004B61A3 /* AppUtility.h */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		DA5A2D7E1B08D7E1008A6E5B /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				DA5A2D7F1B08D7EE008A6E5B /* JSONKit.h */,
+				DA5A2D801B08D7EE008A6E5B /* JSONKit.m */,
+			);
+			name = JSONKit;
+			sourceTree = "<group>";
+		};
+		DAB5F9AB1B087053004E4ADB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				DAB5F9AC1B087076004E4ADB /* XianLocation.gpx */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +333,7 @@
 			files = (
 				DA36E59419FE15F3005B6A60 /* ganmaqu.xcdatamodeld in Sources */,
 				DA0C757C1A0F936700E21E24 /* CircleGridViewCell.m in Sources */,
+				DA5A2D811B08D7EE008A6E5B /* JSONKit.m in Sources */,
 				DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */,
 				DAB543DF1A0A6198008D2C92 /* CircleGridViewController.m in Sources */,
 				DA0E59281A17AA98008D68EC /* Place.m in Sources */,
