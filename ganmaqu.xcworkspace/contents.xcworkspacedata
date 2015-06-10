@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ganmaqu/xidian.gpx">
+   </FileRef>
+   <FileRef
       location = "group:ganmaqu/XianLocation.gpx">
    </FileRef>
    <FileRef

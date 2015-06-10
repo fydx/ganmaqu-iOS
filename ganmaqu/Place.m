@@ -18,6 +18,8 @@
         self.type = dict[@"mainType"];
         self.address = dict[@"address"];
         self.time = dict[@"time"];
+        self.shopId = dict[@"id"];
+        self.detailType = dict[@"detailType"];
         self.cost = [dict[@"cost"] unsignedIntegerValue];
         self.rate = [dict[@"rate"] unsignedIntegerValue];
     }

@@ -12,6 +12,11 @@
 #import "JSONKit.h"
 #import "Place.h"
 #import "AFNetWorking.h"
+#import "MapViewController.h"
+#import "DetailViewController.h"
+#import "SaveSuccessViewController.h"
+#import "AppDelegate.h"
+#import "Route.h"
 @interface ResultViewController()
 
 
@@ -32,9 +37,62 @@
     //self.tableView.layer.masksToBounds = YES;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:UIColorFromRGB(RESULTBGCOLOR)];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveRoute)];
+    UIBarButtonItem *mapButton = [[UIBarButtonItem alloc]initWithTitle:@"Map" style:UIBarButtonItemStyleDone target:self action:@selector(enterMapViewController)];
+    NSArray *barItemArray = [[NSArray alloc]initWithObjects:saveButton,mapButton,nil];
+    self.navigationItem.rightBarButtonItems = barItemArray;
     
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    DetailViewController *detailViewController = (DetailViewController*)[storyboard instantiateViewControllerWithIdentifier:@"detailController"];
+    NSMutableString *url = [[NSMutableString alloc]initWithString:@"http://m.dianping.com/shop/"];
+    Place *place = [self.places objectAtIndex:indexPath.row];
+    [url appendString:place.shopId];
+    detailViewController.url = [url copy];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 
+}
+-(void)saveRoute
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=arrive"];
+    for (Place *place in self.places)
+    {
+        NSDictionary *parameters = @{@"shopId": place.shopId,@"user":DEFALUT_USER};
+        [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"send arrived : %@",place.name);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"send arrived error");
+        }];
+    }
+    //使用Core Data进行存储
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *managedContext = [appDelegate managedObjectContext];
+    if (managedContext != nil) {
+        Route *route = [NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext:managedContext];
+        route.circle = self.circleName;
+        route.type  = self.type;
+        route.city = self.city;
+        route.time  = [NSDate date];
+    }
+    [appDelegate saveContext];
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    SaveSuccessViewController *saveSuccessViewController = (SaveSuccessViewController *)[storyboard instantiateViewControllerWithIdentifier:@"saveSuccessController"];
+    [self.navigationController pushViewController:saveSuccessViewController animated:YES];
+
+}
+-(void)enterMapViewController
+{
+    MapViewController *mapViewController = [[MapViewController alloc]init];
+    mapViewController.places = self.places;
+    [self.navigationController pushViewController:mapViewController animated:YES];
+}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
@@ -93,8 +151,7 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-   ;
-    NSDictionary *parameters = @{@"city": CITY,@"type":self.type,@"pos_x":[NSString stringWithFormat:@"%lf",place.lat],@"pos_y":[NSString stringWithFormat:@"%lf",place.lng],@"time":place.time,@"shopName":place.name,@"cost":[NSString stringWithFormat:@"%ld",place.cost],@"weight":[NSString stringWithFormat:@"%ld",place.weight]};
+    NSDictionary *parameters = @{@"city": CITY,@"type":self.type,@"pos_x":self.circleLng,@"pos_y":self.circleLat,@"time":place.time,@"shopName":place.name,@"cost":[NSString stringWithFormat:@"%ld",place.cost],@"weight":[NSString stringWithFormat:@"%ld",place.weight]};
     NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=change"];
     __weak typeof(self) weakMe = self;
     [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -103,6 +160,7 @@
         Place *changedPlace = [self parseJSONArrayToPlace:responseString];
         [strongMe.places replaceObjectAtIndex:index withObject:changedPlace];
         [strongMe.tableView reloadData];
+        [strongMe sendDeletePlace:place];
     }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"requestChangePlace Error: %@", error);
@@ -114,5 +172,18 @@
     NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
     NSArray *jsonArray = [resultData objectFromJSONData];
     return [[Place alloc]initWithDictionary:[jsonArray firstObject]];
+}
+
+-(void)sendDeletePlace: (Place *)place
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary *parameters = @{@"shopId":place.shopId,@"userId":DEFALUT_USER};
+    NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=delete"];
+    [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"send delete : %@",place.name);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"send delete ERROR : %@",place.name);
+    }];
 }
 @end

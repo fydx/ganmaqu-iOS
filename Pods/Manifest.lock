@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - CWPopup (1.2.6)
   - Masonry (0.5.3)
+  - RESideMenu (4.0.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.2)
@@ -30,12 +31,14 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CWPopup (~> 1.2.5)
   - Masonry (~> 0.5.3)
+  - RESideMenu (~> 4.0.7)
   - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   CWPopup: 3f8b0704a9914813d90372d66525d31f24b27d49
   Masonry: 9f515466afe48632562342a40a1c224071a1a022
+  RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 COCOAPODS: 0.33.1

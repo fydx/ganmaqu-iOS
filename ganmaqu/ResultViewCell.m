@@ -23,6 +23,7 @@
 @property (strong,nonatomic) UIView *downView;
 @property (strong,nonatomic) UIView *shopInfoView;
 @property (strong,nonatomic) UIView *mainView;
+@property (strong,nonatomic) Place  *place;
 @end
 
 @implementation ResultViewCell
@@ -34,6 +35,7 @@
     NSLog(@"cell init");
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.place = place;
         //self.contentView.layer.masksToBounds = YES;
         //self.contentView.layer.cornerRadius = 20.0;
         [self createView];
@@ -56,6 +58,7 @@
         [self setMASLayout];
         [self setViewStyle];
     }
+     self.place = place;
     [self bindData:place];
 
 }
@@ -67,10 +70,36 @@
     _typeLabel.text = place.type;
     _costLabel.text = [NSString stringWithFormat:@"%ld",place.cost];
     [_costImage setImage:[UIImage imageNamed:@"resultpage_icon_cost"]];
-    [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_eat"]];
+    //[_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_eat"]];
+    [self buildImageStype];
    // _costLabel.backgroundColor = [UIColor blueColor];
 }
-
+- (void)buildImageStype
+{
+    if ([self.place.detailType isEqualToString:@"咖啡厅"]) {
+        [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_coffee"]];
+    }
+    else if([self.place.detailType isEqualToString:@"KTV"])
+    {
+       [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_ktv"]];
+    }
+    else if([self.place.detailType isEqualToString:@"电影院"])
+    {
+       [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_movie"]];
+    }
+    else if([self.place.detailType isEqualToString:@"超市/便利店"])
+    {
+        [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_shop"]];
+    }
+    else if([self.place.type isEqualToString:@"美食"])
+    {
+        [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_eat"]];
+    }
+    else
+    {
+        [_typeImage setImage:[UIImage imageNamed:@"resultpage_icon_park"]];
+    }
+}
 -(void)setViewStyle
 {
     [_numberLabel setFont:[UIFont systemFontOfSize:62]];
@@ -78,7 +107,7 @@
     [_addressLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
     [_shopNameLabel setFont:[UIFont systemFontOfSize:28]];
     self.shopNameLabel.numberOfLines = 1;
-    self.shopNameLabel.minimumScaleFactor = 0.1;
+    self.shopNameLabel.minimumScaleFactor = 0.8;
     self.shopNameLabel.adjustsFontSizeToFitWidth = YES;
     [_typeLabel setFont:[UIFont systemFontOfSize:15]];
     [_typeLabel setTextColor:UIColorFromRGB(RESULTTEXTCOLOR)];
@@ -180,7 +209,7 @@
     {
        make.top.equalTo(_upView);
        make.left.equalTo(_upView).offset(padding);
-       //make.width.equalTo(@30);
+       make.width.equalTo(@32);
        make.bottom.equalTo(_upView);
     }];
 
@@ -188,6 +217,7 @@
     {
       make.top.equalTo(_upView);
       make.left.equalTo(_numberLabel.mas_right).offset(padding);
+      make.right.equalTo(_upView).offset(-16);
       make.bottom.equalTo(_upView);
     }
     ];
@@ -195,6 +225,7 @@
     {
       make.top.equalTo(_shopInfoView).offset(padding);
       make.left.equalTo(_shopInfoView);
+      make.right.equalTo(_shopInfoView).offset(-16);
     }
     ];
     [_addressLabel mas_makeConstraints:^(MASConstraintMaker *make)
@@ -208,8 +239,8 @@
     {
       make.top.equalTo(_upView);
       make.right.equalTo(_upView);
-      make.width.greaterThanOrEqualTo(@46);
-      make.height.greaterThanOrEqualTo(@46);
+      make.width.equalTo(@46);
+      make.height.equalTo(@46);
     }
     ];
     [_typeLabel mas_makeConstraints:^(MASConstraintMaker *make)

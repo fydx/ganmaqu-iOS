@@ -21,6 +21,8 @@
 @property (assign,nonatomic) NSUInteger rate;
 @property (strong,nonatomic) NSString   *time;
 @property (assign,nonatomic) NSUInteger weight;
+@property (strong,nonatomic) NSString   *shopId;
+@property (strong,nonatomic) NSString   *detailType;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 @end

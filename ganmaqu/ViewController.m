@@ -14,6 +14,7 @@
 #import "ResultViewController.h"
 #import "Place.h"
 #import "JSONKit.h"
+#import "RESideMenu.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UIButton               *recommandButton;
@@ -27,6 +28,10 @@
 @property (nonatomic, assign) CLLocationCoordinate2D locationCoordinate;
 @property (strong, nonatomic) NSString  *circleLat;
 @property (strong, nonatomic) NSString  *circleLng;
+@property (strong, nonatomic) NSArray   *circles;
+@property (strong, nonatomic) NSString  *currentCircle;
+@property (assign, nonatomic) BOOL      isFinishLoadCircles;
+@property (assign, nonatomic) BOOL      isFinsihSelectCircle;
 
 @end
 
@@ -45,9 +50,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
          [_locService startUserLocationService];
     });
-
+    [self requestCityCircles];
     self.recommandButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.useBlurForPopup = YES;
+    
     [self setWidget];
 }
 
@@ -106,10 +112,10 @@
     [self.alert show];
 }
 - (IBAction)enterResultPage:(id)sender {
-    //    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
-    //    [self presentViewController:controller animated:YES completion:nil];
-   // ResultViewController *resultViewController = [[ResultViewController alloc]init];
-  
+    if (self.currentCircle) {
+         [self requestCircleLocation:self.currentCircle];
+    }
+   
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -173,8 +179,9 @@
 //    [self presentPopupViewController:samplePopupViewController animated:YES completion:nil];
 //    [self setUseBlurForPopup:YES];
    
-     CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
+    CirclePopUpViewController *popupViewController = [[CirclePopUpViewController alloc]init];
     popupViewController.parentDelegate = self;
+    popupViewController.circles = self.circles;
     [self presentPopupViewController:popupViewController animated:YES completion:nil];
 //    CircleGridViewController *controller = [[CircleGridViewController alloc]init];
 //    [self presentViewController:controller animated:YES completion:nil];
@@ -188,6 +195,8 @@
 - (void)changeCircle:(NSString *)circleName
 {
     [_recommandButton setTitle:circleName forState:UIControlStateNormal];
+    self.currentCircle = circleName;
+    self.isFinishLoadCircles = YES;
 }
 #pragma mark 网络交互
 /**
@@ -205,7 +214,9 @@
         NSString *circle = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"获取当前商圈: %@", circle);
         strongMe.recommandButton.titleLabel.text = circle;
-        [strongMe requestCircleLocation:circle];
+        strongMe.currentCircle= circle;
+        //[strongMe requestCircleLocation:circle];
+        strongMe.isFinishLoadCircles = YES;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"requestCurrentCircle Error: %@", error);
     }];
@@ -219,7 +230,7 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"type" : self.typeButton.titleLabel.text,@"pos_x": self.self.circleLng,@"pos_y":self.circleLat,@"json" : @"[]",@"id" : @"root",@"command": @"full"};
+    NSDictionary *parameters = @{@"type" : self.typeButton.titleLabel.text,@"pos_x": self.self.circleLng,@"pos_y":self.circleLat,@"json" : @"[]",@"id" : DEFALUT_USER,@"command": @"full"};
     __weak typeof(self) weakMe = self;
     [manager POST:IPADDRESS parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __strong typeof(self) strongMe = weakMe;
@@ -228,8 +239,12 @@
         UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         
         ResultViewController *resultViewController = (ResultViewController*)[storyboard instantiateViewControllerWithIdentifier:@"resultController"];
-        resultViewController.places = [self parseRouteJSON:responseString];
-        resultViewController.type = self.typeButton.titleLabel.text;
+        resultViewController.places = [strongMe parseRouteJSON:responseString];
+        resultViewController.type = strongMe.typeButton.titleLabel.text;
+        resultViewController.circleLat = strongMe.circleLat;
+        resultViewController.circleLng = strongMe.circleLng;
+        resultViewController.circleName = strongMe.currentCircle;
+        resultViewController.city       = CITY;
         [strongMe.navigationController pushViewController:resultViewController animated:YES];
         
         //[self parseRouteJSON:responseString];
@@ -248,7 +263,7 @@
     __weak typeof(self) weakMe = self;
     [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         __strong typeof(self) strongMe = weakMe;
-        NSLog(@"circle locatino : %@",responseObject);
+        NSLog(@"circle location : %@",responseObject);
          NSDictionary *dic = responseObject;
         strongMe.circleLat = dic[@"lat"];
         strongMe.circleLng = dic[@"lng"];
@@ -258,16 +273,7 @@
         NSLog(@"requestCircleLocation Error: %@", error);
     }];
 }
-//- (NSString *)requestCircleJSON
-//{
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"foo": @"bar"};
-//    [manager POST:@"http://example.com/resources.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-//}
+
 - (NSMutableArray *)parseRouteJSON :(NSString *)result
 {
     NSData *resultData = [result dataUsingEncoding: NSUTF8StringEncoding];
@@ -283,5 +289,36 @@
 
     return places;
     
+}
+
+- (void)requestCityCircles
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSDictionary *parameters = @{@"city": CITY};
+    NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=getcirclelist"];
+    __weak typeof(self) weakMe = self;
+    [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __strong typeof(self) strongMe = weakMe;
+        NSLog(@"circle for city : %@",responseObject);
+        NSDictionary *dic = responseObject;
+        strongMe.circles = [[strongMe parseCircles:dic] copy];
+        strongMe.isFinishLoadCircles = YES;
+    }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"requestCityCircles Error: %@", error);
+         }];
+}
+
+- (NSMutableArray *)parseCircles : (NSDictionary *)dict
+{
+    NSMutableArray *circleArray = [[NSMutableArray alloc]initWithCapacity:7];
+    for (int i = 1; i <= dict.count; i++) {
+        NSMutableString *itemHeader = [[NSMutableString alloc]initWithString:@"item"];
+        [itemHeader appendString:[NSString stringWithFormat:@"%d",i]];
+        NSString *circle = dict[itemHeader];
+        [circleArray addObject:circle];
+    }
+    return circleArray;
 }
 @end

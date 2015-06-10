@@ -10,7 +10,7 @@
 #import "CircleGridViewCell.h"
 #define NUMBER_OF_LINE 3
 @interface CircleGridViewController ()
-@property (strong,nonatomic) NSMutableArray *circleArray;
+@property (strong,nonatomic) NSArray *circleArray;
 @property int sectionNumber;
 @property int rowNumber;
 
@@ -18,7 +18,7 @@
 @implementation CircleGridViewController
 
 
-- (instancetype)initWithCollectionViewLayoutAndCircle:(UICollectionViewLayout *)layout circle:(NSMutableArray *)circleArray
+- (instancetype)initWithCollectionViewLayoutAndCircle:(UICollectionViewLayout *)layout circle:(NSArray *)circleArray
 {
     self = [super initWithCollectionViewLayout:layout];
     _circleArray = circleArray;

@@ -12,4 +12,5 @@
 @interface CirclePopUpViewController : UIViewController
 
 @property (strong,nonatomic) id<PopUpDismissProtocol,SelectCircleProtocol> parentDelegate;
+@property (strong,nonatomic) NSArray           *circles;
 @end

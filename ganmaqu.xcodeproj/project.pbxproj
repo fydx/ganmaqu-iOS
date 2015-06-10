@@ -30,8 +30,15 @@
 		DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4DF6461A014C04004B61A3 /* AppUtility.m */; };
 		DA5694971B0A4EF3004A5411 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5694961B0A4EF3004A5411 /* Reveal.framework */; };
 		DA5A2D811B08D7EE008A6E5B /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5A2D801B08D7EE008A6E5B /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DA77F39C1B0C8A9F0041DFA1 /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA77F39B1B0C8A9F0041DFA1 /* SideMenuViewController.m */; };
 		DAB543DC1A0A5A97008D2C92 /* CirclePopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB543DB1A0A5A97008D2C92 /* CirclePopUpViewController.m */; };
 		DAB543DF1A0A6198008D2C92 /* CircleGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB543DE1A0A6198008D2C92 /* CircleGridViewController.m */; };
+		DABECA1C1B11C312007BBA4D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABECA1B1B11C312007BBA4D /* DetailViewController.m */; };
+		DADF72D11B0B8F38002CBE30 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF72D01B0B8F38002CBE30 /* MapViewController.m */; };
+		DAF1661F1B285E82008D44C0 /* SaveSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1661E1B285E82008D44C0 /* SaveSuccessViewController.m */; };
+		DAF166291B286A72008D44C0 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF166281B286A72008D44C0 /* Route.m */; };
+		DAF85CF21B0F6FC9005CA4A5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF85CF11B0F6FC9005CA4A5 /* LoginViewController.m */; };
+		DAF85CF51B0F72B1005CA4A5 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF85CF41B0F72B1005CA4A5 /* RegistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +77,25 @@
 		DA5694961B0A4EF3004A5411 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		DA5A2D7F1B08D7EE008A6E5B /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = JSONKit/JSONKit.h; sourceTree = "<group>"; };
 		DA5A2D801B08D7EE008A6E5B /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = JSONKit/JSONKit.m; sourceTree = "<group>"; };
+		DA77F39A1B0C8A9F0041DFA1 /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMenuViewController.h; path = SideMenu/SideMenuViewController.h; sourceTree = "<group>"; };
+		DA77F39B1B0C8A9F0041DFA1 /* SideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMenuViewController.m; path = SideMenu/SideMenuViewController.m; sourceTree = "<group>"; };
 		DAB543DB1A0A5A97008D2C92 /* CirclePopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CirclePopUpViewController.m; sourceTree = "<group>"; };
 		DAB543DD1A0A6198008D2C92 /* CircleGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGridViewController.h; sourceTree = "<group>"; };
 		DAB543DE1A0A6198008D2C92 /* CircleGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGridViewController.m; sourceTree = "<group>"; };
 		DAB5F9AC1B087076004E4ADB /* XianLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XianLocation.gpx; sourceTree = "<group>"; };
+		DABECA181B11BFF6007BBA4D /* xidian.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = xidian.gpx; sourceTree = "<group>"; };
+		DABECA1A1B11C312007BBA4D /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Web/DetailViewController.h; sourceTree = "<group>"; };
+		DABECA1B1B11C312007BBA4D /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Web/DetailViewController.m; sourceTree = "<group>"; };
+		DADF72CF1B0B8F38002CBE30 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Map/MapViewController.h; sourceTree = "<group>"; };
+		DADF72D01B0B8F38002CBE30 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Map/MapViewController.m; sourceTree = "<group>"; };
+		DAF1661D1B285E82008D44C0 /* SaveSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveSuccessViewController.h; sourceTree = "<group>"; };
+		DAF1661E1B285E82008D44C0 /* SaveSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveSuccessViewController.m; sourceTree = "<group>"; };
+		DAF166271B286A72008D44C0 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route.h; sourceTree = "<group>"; };
+		DAF166281B286A72008D44C0 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route.m; sourceTree = "<group>"; };
+		DAF85CF01B0F6FC9005CA4A5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
+		DAF85CF11B0F6FC9005CA4A5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
+		DAF85CF31B0F72B1005CA4A5 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistViewController.h; path = Login/RegistViewController.h; sourceTree = "<group>"; };
+		DAF85CF41B0F72B1005CA4A5 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegistViewController.m; path = Login/RegistViewController.m; sourceTree = "<group>"; };
 		E4DC7AFF84BD481C9E4C0117 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0884FAC8B0B41C4A3196C44 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +143,8 @@
 				DA0E591D1A1789D0008D68EC /* ResultViewController.m */,
 				DA0E59201A17A231008D68EC /* ResultViewCell.h */,
 				DA0E59211A17A231008D68EC /* ResultViewCell.m */,
+				DAF1661D1B285E82008D44C0 /* SaveSuccessViewController.h */,
+				DAF1661E1B285E82008D44C0 /* SaveSuccessViewController.m */,
 			);
 			name = Result;
 			sourceTree = "<group>";
@@ -146,6 +170,11 @@
 		DA36E58A19FE15F3005B6A60 /* ganmaqu */ = {
 			isa = PBXGroup;
 			children = (
+				DAF166201B285FE3008D44C0 /* Model */,
+				DABECA191B11C2F3007BBA4D /* Web */,
+				DAF85CEF1B0F6FAA005CA4A5 /* Login */,
+				DA77F3991B0C8A230041DFA1 /* SideMenu */,
+				DADF72CE1B0B8F1F002CBE30 /* Map */,
 				DA5A2D7E1B08D7E1008A6E5B /* JSONKit */,
 				DAB5F9AB1B087053004E4ADB /* Other */,
 				DA293EDD1AF8ACC00033CC8F /* mapapi.bundle */,
@@ -217,12 +246,60 @@
 			name = JSONKit;
 			sourceTree = "<group>";
 		};
+		DA77F3991B0C8A230041DFA1 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				DA77F39A1B0C8A9F0041DFA1 /* SideMenuViewController.h */,
+				DA77F39B1B0C8A9F0041DFA1 /* SideMenuViewController.m */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
 		DAB5F9AB1B087053004E4ADB /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				DAB5F9AC1B087076004E4ADB /* XianLocation.gpx */,
+				DABECA181B11BFF6007BBA4D /* xidian.gpx */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		DABECA191B11C2F3007BBA4D /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				DABECA1A1B11C312007BBA4D /* DetailViewController.h */,
+				DABECA1B1B11C312007BBA4D /* DetailViewController.m */,
+			);
+			name = Web;
+			sourceTree = "<group>";
+		};
+		DADF72CE1B0B8F1F002CBE30 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DADF72CF1B0B8F38002CBE30 /* MapViewController.h */,
+				DADF72D01B0B8F38002CBE30 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		DAF166201B285FE3008D44C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAF166271B286A72008D44C0 /* Route.h */,
+				DAF166281B286A72008D44C0 /* Route.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DAF85CEF1B0F6FAA005CA4A5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DAF85CF01B0F6FC9005CA4A5 /* LoginViewController.h */,
+				DAF85CF11B0F6FC9005CA4A5 /* LoginViewController.m */,
+				DAF85CF31B0F72B1005CA4A5 /* RegistViewController.h */,
+				DAF85CF41B0F72B1005CA4A5 /* RegistViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,17 +409,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA36E59419FE15F3005B6A60 /* ganmaqu.xcdatamodeld in Sources */,
+				DAF166291B286A72008D44C0 /* Route.m in Sources */,
+				DAF1661F1B285E82008D44C0 /* SaveSuccessViewController.m in Sources */,
 				DA0C757C1A0F936700E21E24 /* CircleGridViewCell.m in Sources */,
+				DABECA1C1B11C312007BBA4D /* DetailViewController.m in Sources */,
 				DA5A2D811B08D7EE008A6E5B /* JSONKit.m in Sources */,
 				DA4DF6471A014C04004B61A3 /* AppUtility.m in Sources */,
 				DAB543DF1A0A6198008D2C92 /* CircleGridViewController.m in Sources */,
 				DA0E59281A17AA98008D68EC /* Place.m in Sources */,
 				DAB543DC1A0A5A97008D2C92 /* CirclePopUpViewController.m in Sources */,
+				DADF72D11B0B8F38002CBE30 /* MapViewController.m in Sources */,
 				DA36E59719FE15F3005B6A60 /* ViewController.m in Sources */,
 				DA0E59221A17A231008D68EC /* ResultViewCell.m in Sources */,
 				DA36E58E19FE15F3005B6A60 /* main.m in Sources */,
 				DA293EE01AF8ACF10033CC8F /* AppDelegate.mm in Sources */,
+				DA77F39C1B0C8A9F0041DFA1 /* SideMenuViewController.m in Sources */,
 				DA0E591E1A1789D0008D68EC /* ResultViewController.m in Sources */,
+				DAF85CF51B0F72B1005CA4A5 /* RegistViewController.m in Sources */,
+				DAF85CF21B0F6FC9005CA4A5 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
