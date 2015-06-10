@@ -27,7 +27,7 @@
         _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [self.view addSubview:_mapView];
         Place *firstPlace = [self.places firstObject];
-        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(firstPlace.lat, firstPlace.lng);
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(firstPlace.lat , firstPlace.lng );
         _mapView.centerCoordinate = position;
         _mapView.zoomLevel  = 16;
         [self addPlacesPinsInMap];
@@ -68,7 +68,7 @@
 {
     for (Place *place in self.places) {
         BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];
-        annotation.coordinate = CLLocationCoordinate2DMake(place.lat, place.lng);
+        annotation.coordinate = CLLocationCoordinate2DMake(place.lat , place.lng );
         NSMutableString *string = [[NSMutableString alloc]init];
         [string appendString:@"["];
         [string appendString:place.detailType];

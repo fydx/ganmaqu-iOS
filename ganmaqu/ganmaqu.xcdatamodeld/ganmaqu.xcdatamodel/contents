@@ -3,7 +3,7 @@
     <entity name="Route" representedClassName="Route" syncable="YES">
         <attribute name="circle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="routeData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

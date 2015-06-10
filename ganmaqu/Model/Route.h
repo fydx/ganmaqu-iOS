@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSString * circle;
 @property (nonatomic, retain) NSString * city;
-@property (nonatomic, retain) NSString * routeData;
+@property (nonatomic, retain) NSData * routeData;
 @property (nonatomic, retain) NSDate * time;
 @property (nonatomic, retain) NSString * type;
 

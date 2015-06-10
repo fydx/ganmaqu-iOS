@@ -36,7 +36,7 @@
 		DABECA1C1B11C312007BBA4D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DABECA1B1B11C312007BBA4D /* DetailViewController.m */; };
 		DADF72D11B0B8F38002CBE30 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADF72D01B0B8F38002CBE30 /* MapViewController.m */; };
 		DAF1661F1B285E82008D44C0 /* SaveSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1661E1B285E82008D44C0 /* SaveSuccessViewController.m */; };
-		DAF166291B286A72008D44C0 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF166281B286A72008D44C0 /* Route.m */; };
+		DAF1662C1B286E87008D44C0 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1662B1B286E87008D44C0 /* Route.m */; };
 		DAF85CF21B0F6FC9005CA4A5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF85CF11B0F6FC9005CA4A5 /* LoginViewController.m */; };
 		DAF85CF51B0F72B1005CA4A5 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF85CF41B0F72B1005CA4A5 /* RegistViewController.m */; };
 /* End PBXBuildFile section */
@@ -90,8 +90,8 @@
 		DADF72D01B0B8F38002CBE30 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Map/MapViewController.m; sourceTree = "<group>"; };
 		DAF1661D1B285E82008D44C0 /* SaveSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveSuccessViewController.h; sourceTree = "<group>"; };
 		DAF1661E1B285E82008D44C0 /* SaveSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveSuccessViewController.m; sourceTree = "<group>"; };
-		DAF166271B286A72008D44C0 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route.h; sourceTree = "<group>"; };
-		DAF166281B286A72008D44C0 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route.m; sourceTree = "<group>"; };
+		DAF1662A1B286E87008D44C0 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Route.h; path = Model/Route.h; sourceTree = "<group>"; };
+		DAF1662B1B286E87008D44C0 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Route.m; path = Model/Route.m; sourceTree = "<group>"; };
 		DAF85CF01B0F6FC9005CA4A5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		DAF85CF11B0F6FC9005CA4A5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		DAF85CF31B0F72B1005CA4A5 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegistViewController.h; path = Login/RegistViewController.h; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 		DAF166201B285FE3008D44C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DAF166271B286A72008D44C0 /* Route.h */,
-				DAF166281B286A72008D44C0 /* Route.m */,
+				DAF1662A1B286E87008D44C0 /* Route.h */,
+				DAF1662B1B286E87008D44C0 /* Route.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA36E59419FE15F3005B6A60 /* ganmaqu.xcdatamodeld in Sources */,
-				DAF166291B286A72008D44C0 /* Route.m in Sources */,
+				DAF1662C1B286E87008D44C0 /* Route.m in Sources */,
 				DAF1661F1B285E82008D44C0 /* SaveSuccessViewController.m in Sources */,
 				DA0C757C1A0F936700E21E24 /* CircleGridViewCell.m in Sources */,
 				DABECA1C1B11C312007BBA4D /* DetailViewController.m in Sources */,

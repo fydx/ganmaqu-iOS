@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface Place : NSObject
+@interface Place : NSObject<NSCoding>
 
 @property (assign,nonatomic) CGFloat    lat;
 @property (assign,nonatomic) CGFloat    lng;

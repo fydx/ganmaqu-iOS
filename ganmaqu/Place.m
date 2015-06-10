@@ -25,4 +25,37 @@
     }
     return self;
 }
+#pragma mark - NSCoding
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    self.lat = [decoder decodeDoubleForKey:@"lat"];
+    self.lng = [decoder decodeDoubleForKey:@"lng"];;
+    self.name = [decoder decodeObjectForKey:@"name"];
+    self.type = [decoder decodeObjectForKey:@"type"];
+    self.address = [decoder decodeObjectForKey:@"address"];
+    self.time = [decoder decodeObjectForKey:@"time"];
+    self.shopId = [decoder decodeObjectForKey:@"shopId"];
+    self.detailType = [decoder decodeObjectForKey:@"detailType"];
+    self.cost = [decoder decodeIntegerForKey:@"cost"];
+    self.rate = [decoder decodeIntegerForKey:@"rate"];
+ 
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeDouble:self.lat forKey:@"lat"];
+    [encoder encodeDouble:self.lng forKey:@"lng"];
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.type forKey:@"type"];
+    [encoder encodeObject:self.address forKey:@"address"];
+    [encoder encodeObject:self.time forKey:@"time"];
+    [encoder encodeObject:self.shopId forKey:@"shopId"];
+    [encoder encodeObject:self.detailType forKey:@"detailType"];
+    [encoder encodeInteger:self.cost forKey:@"cost"];
+    [encoder encodeInteger:self.rate forKey:@"rate"];
+    
+}
 @end

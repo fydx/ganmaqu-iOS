@@ -78,6 +78,7 @@
         route.type  = self.type;
         route.city = self.city;
         route.time  = [NSDate date];
+        route.routeData = [NSKeyedArchiver archivedDataWithRootObject:self.places];
     }
     [appDelegate saveContext];
 
@@ -151,7 +152,14 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary *parameters = @{@"city": CITY,@"type":self.type,@"pos_x":self.circleLng,@"pos_y":self.circleLat,@"time":place.time,@"shopName":place.name,@"cost":[NSString stringWithFormat:@"%ld",place.cost],@"weight":[NSString stringWithFormat:@"%ld",place.weight]};
+    NSDictionary *parameters = @{@"city": CITY,
+                                 @"type":self.type,
+                                 @"pos_x":self.circleLng,
+                                 @"pos_y":self.circleLat,
+                                 @"time":place.time,
+                                 @"shopName":place.name,
+                                 @"cost":[NSString stringWithFormat:@"%ld",place.cost],
+                                @"weight":[NSString stringWithFormat:@"%ld",place.weight]};
     NSString *requestURL = [IPADDRESS stringByAppendingString:@"/?command=change"];
     __weak typeof(self) weakMe = self;
     [manager GET:requestURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
